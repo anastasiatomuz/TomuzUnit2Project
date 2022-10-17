@@ -20,10 +20,10 @@ public class LinearEquationRunner {
         x1Str = x1Str.replaceAll("\\s", "");
         int x1 = Integer.parseInt(x1Str);
 
-        String y1Str = coord1.substring(locParaFirst1 + 1,locComma1);
+        String y1Str = coord1.substring(locComma1 + 1, locParaSecond1);
         y1Str = y1Str.replaceAll("\\s", "");
         int y1 = Integer.parseInt(y1Str);
-        y1 ++;
+
 
         //coordinate 2
         int locParaFirst2 = coord2.indexOf("(");
@@ -33,13 +33,13 @@ public class LinearEquationRunner {
         x2Str = x2Str.replaceAll("\\s", "");
         int x2 = Integer.parseInt(x1Str);
 
-        String y2Str = coord2.substring(locParaFirst2 + 1,locComma2);
+        String y2Str = coord2.substring(locComma2 + 1, locParaSecond2);
         y1Str = y1Str.replaceAll("\\s", "");
         int y2 = Integer.parseInt(y2Str);
-        y2 ++;
 
-        System.out.println("x1: " + (x1 + 1) + "    y1: " +  y1  );
-        System.out.println("x2: " + (x2 + 1) + "    y2: " +  y2 );
+
+        System.out.println("x1: " + x1  + "    y1: " +  y1  );
+        System.out.println("x2: " + x2 +  "    y2: " +  y2 );
         /*
         Write initial code in your LinearEquationRunner class to obtain the coordinates from the user and figure out
          how to parse the  two int x and y values from each coordinates entered as (x, y) and stored as a String;
