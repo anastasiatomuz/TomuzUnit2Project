@@ -37,11 +37,17 @@ public class LinearEquationRunner {
         y2Str = y2Str.replaceAll("\\s", "");
         int y2 = Integer.parseInt(y2Str);
 
-
-        System.out.println("x1: " + x1  + "    y1: " +  y1  );
-        System.out.println("x2: " + x2 +  "    y2: " +  y2 );
-        LinearEquation linEq = new LinearEquation(x1, y1, x2, y2);
-
-
+        if (x1 != x2) {
+            LinearEquation linEq = new LinearEquation(x1, y1, x2, y2);
+            System.out.println(linEq.lineInfo());
+            System.out.print("Enter a value for x: ");
+            double userXValue = scan.nextDouble();
+            System.out.println("\nThe point on the line is: " + linEq.coordinateForX(userXValue));
+        }else{
+            System.out.println("These points are in a vertical line: x = " + x1);
+        }
     }
 }
+
+
+//fix 1 as slope before x

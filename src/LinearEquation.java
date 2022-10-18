@@ -77,9 +77,9 @@ public class LinearEquation {
         }
         String yInt = "";
         if (yIntercept() < 0){
-            yInt += "- " + yIntercept();
+            yInt += " - " + yIntercept() * -1;
         }if (yIntercept() > 0){
-            yInt += "+ " + yIntercept();
+            yInt += " + " + yIntercept();
         }
         double slopeY = (y2 - y1);
         double slopeX = (x2 - x1);
@@ -92,15 +92,17 @@ public class LinearEquation {
         if ((slopeX < 0) && (slopeY < 0)) { //if both the numerator and denominator in slope are both negative, turns the "fraction" positive
             slopeX = Math.abs(slopeX);
             slopeY = Math.abs(slopeY);
-            return "y = " + slopeY + "/" + slopeX + "x" + yInt;
         }
         if (slope() % 1 == 0){ // checks if the slope double is an int
-            return "y = " + slope() + "x" + yInt;
+            return "y = " + (int) slope() + "x" + yInt;
         }
         if (slope() == 1){ // if slope is 1, removes the one in front of the x
             return "y = x" + yInt;
         }
-        return "y = " + slopeY + "/" + slopeX + "x" + yInt;
+        if (slope() == - 1.0){ // if slope is 1, removes the one in front of the x
+            return "y = -x" + yInt;
+        }
+        return "y = " + (int) slopeY + "/" + (int) slopeX + "x" + yInt;
     }
 
 
@@ -120,7 +122,9 @@ public class LinearEquation {
 
         HINT:  the Math.round method can help with this!
      */
-    public double roundedToHundredth(double toRound){return new BigDecimal(toRound).setScale(2, RoundingMode.HALF_UP).doubleValue();}
+    public double roundedToHundredth(double toRound){
+        return new BigDecimal(toRound).setScale(2, RoundingMode.HALF_UP).doubleValue();
+    }
 
 
 
@@ -141,7 +145,7 @@ public class LinearEquation {
                 ")\nThe equation of the line between these two points is: " + equation() +
                 "\nThe slope of this line is: " + slope() +
                 "\nThe y-intercept of the line is: " + yIntercept() +
-                "\nThe distance between the points is: " + distance(x1, x2, y1, y2);
+                "\nThe distance between the points is: " + distance(x1, x2, y1, y2) + "\n";
     }
 
 }
