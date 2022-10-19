@@ -72,9 +72,14 @@ public class LinearEquation {
                subtraction!
      */
     public String equation(){
+        String equation = "";
+        String slopeForm;
+        boolean slopeChanged = false;
         if (slope() == 0){
-            return "y = " + yIntercept();
+            slopeChanged = true;
+            equation = "y = " + yIntercept();
         }
+
         String yInt = "";
         if (yIntercept() < 0){
             yInt += " - " + yIntercept() * -1;
@@ -83,26 +88,36 @@ public class LinearEquation {
         }
         double slopeY = (y2 - y1);
         double slopeX = (x2 - x1);
-        double slope;
-        boolean slopeFrac = true; //true if slope variable hasn't been used (slope is "printable" from the get-go)
-        if (slopeY > 0 && slopeX < 0){  // if the negative is only in the denominator, move it to the numerator
+
+        // if the negative is only in the denominator, move it to the numerator
+        if (slopeY > 0 && slopeX < 0){
             slopeY *= - 1;
             slopeX *= - 1;
         }
-        if ((slopeX < 0) && (slopeY < 0)) { //if both the numerator and denominator in slope are both negative, turns the "fraction" positive
+        //if both the numerator and denominator in slope are both negative, turns the "fraction" positive
+        if ((slopeX < 0) && (slopeY < 0)) {
             slopeX = Math.abs(slopeX);
             slopeY = Math.abs(slopeY);
         }
-        if (slope() % 1 == 0){ // checks if the slope double is an int
-            return "y = " + (int) slope() + "x" + yInt;
+        // checks if the slope double is an int
+        if (slope() % 1 == 0){
+            slopeChanged = true;
+            equation = "y = " + (int) slope() + "x" + yInt;
         }
-        if (slope() == 1){ // if slope is 1, removes the one in front of the x
-            return "y = x" + yInt;
+        // if slope is 1, removes the one in front of the x
+        if (slope() == 1.0){
+            slopeChanged = true;
+            equation = "y = x" + yInt;
         }
-        if (slope() == - 1.0){ // if slope is 1, removes the one in front of the x
-            return "y = -x" + yInt;
+        // if slope is 1, removes the one in front of the x
+        if (slope() == - 1.0){
+            slopeChanged = true;
+            equation =  "y = -x" + yInt;
         }
-        return "y = " + (int) slopeY + "/" + (int) slopeX + "x" + yInt;
+        if (slopeChanged == false){
+            equation =  "y = " + (int) slopeY + "/" + (int) slopeX + "x" + yInt;
+        }
+        return equation;
     }
 
 
