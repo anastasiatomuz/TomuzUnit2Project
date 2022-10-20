@@ -12,7 +12,7 @@ public class LinearEquationRunner {
         String coord2 = scan.nextLine();
         scan.nextLine();
 
-        //coordiate 1
+        //coordinate 1
         int locParaFirst1 = coord1.indexOf("(");
         int locComma1 = coord1.indexOf(",");
         int locParaSecond1 = coord1.indexOf(")");
@@ -37,6 +37,7 @@ public class LinearEquationRunner {
         y2Str = y2Str.replaceAll("\\s", "");
         int y2 = Integer.parseInt(y2Str);
 
+        //checks if the slope is undefined
         if (x1 != x2) {
             LinearEquation linEq = new LinearEquation(x1, y1, x2, y2);
             System.out.println(linEq.lineInfo());
@@ -48,6 +49,3 @@ public class LinearEquationRunner {
         }
     }
 }
-
-
-//fix 1 as slope before x
