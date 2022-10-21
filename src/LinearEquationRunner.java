@@ -37,10 +37,13 @@ public class LinearEquationRunner {
         y2Str = y2Str.replaceAll("\\s", "");
         int y2 = Integer.parseInt(y2Str);
 
+
         //checks if the slope is undefined
         if (x1 != x2) {
+            //prints out equation and information about coordinates
             LinearEquation linEq = new LinearEquation(x1, y1, x2, y2);
             System.out.println(linEq.lineInfo());
+            //asking for and plugging in user's value of x for the equation
             System.out.print("Enter a value for x: ");
             double userXValue = scan.nextDouble();
             System.out.println("\nThe point on the line is: " + linEq.coordinateForX(userXValue));
